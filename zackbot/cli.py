@@ -3,9 +3,14 @@
     python -m zackbot.cli
 """
 
+import logging
+import os
+
 from dotenv import load_dotenv
 
 load_dotenv()
+# ZACKBOT_DEBUG=1 prints each turn's quirk plan
+logging.basicConfig(level=logging.INFO if os.getenv("ZACKBOT_DEBUG") == "1" else logging.WARNING)
 
 from zackbot.brain import ZackBrain  # noqa: E402
 
