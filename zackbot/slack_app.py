@@ -21,6 +21,7 @@ from slack_bolt import App  # noqa: E402
 from slack_bolt.adapter.socket_mode import SocketModeHandler  # noqa: E402
 
 from zackbot.brain import ZackBrain  # noqa: E402
+from zackbot.health import start_health_server  # noqa: E402
 
 logging.basicConfig(level=logging.INFO)
 log = logging.getLogger("zackbot")
@@ -86,6 +87,8 @@ def on_mention(event, client):
 
 
 def main() -> None:
+    if start_health_server():
+        log.info("Health endpoint listening on port %s", os.environ["PORT"])
     log.info("ZackBot connecting to Slack (Socket Mode)...")
     SocketModeHandler(app, os.environ["SLACK_APP_TOKEN"]).start()
 

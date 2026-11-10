@@ -87,7 +87,7 @@ Run the offline tests (no API calls):
 
 ## Hosting (later)
 
-Socket Mode only needs outbound internet, so any always-on box works: a small VM, a container, or a spare machine. Things worth adding when it's more than a toy:
+See [DEPLOY.md](DEPLOY.md) for running it on Google Cloud (Cloud Run or a small VM) so nobody's machine has to stay on. Things worth adding when it's more than a toy:
 
 - Persist conversations (SQLite/Redis) so restarts don't wipe memory
 - Per-user rate limits / a monthly spend cap
